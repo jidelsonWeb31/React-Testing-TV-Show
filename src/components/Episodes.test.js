@@ -1,12 +1,13 @@
 import React from 'react';
-import { rerender } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Episodes from './Episodes';
 
 
 
 
 test("re-renders correctly with list of episodes", () => {
-    const episodesData = [{
+    const episodesData = [
+        {
         id: 553946,
         url: "http://www.tvmaze.com/episodes/553946/stranger-things-1x01-chapter-one-the-vanishing-of-will-byers",
         name: "Chapter One: The Vanishing of Will Byers",
@@ -68,14 +69,15 @@ test("re-renders correctly with list of episodes", () => {
         href: "http://api.tvmaze.com/episodes/578664"
         }
         }
-        }];
+        }
+    ];
 
     const { rerender, getAllByTestId } = render(
         <Episodes episodes={episodesData} />
     )
 
     const episodes = getAllByTestId(/episode/i);
-
+    console.log(episodes);
     expect(episodes).toHaveLength(3);
 
 })
